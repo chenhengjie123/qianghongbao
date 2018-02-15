@@ -27,6 +27,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.codeboy.qianghongbao.job.WechatAccessbilityJob;
+import com.codeboy.qianghongbao.job.FengxingAccessbilityJob;
 import com.codeboy.qianghongbao.util.BitmapUtils;
 
 import java.io.File;
@@ -198,61 +199,61 @@ public class MainActivity extends BaseSettingsActivity {
     }
 
     /** 二维码*/
-    private void showQrDialog() {
-        final Dialog dialog = new Dialog(this, R.style.QR_Dialog_Theme);
-        View view = getLayoutInflater().inflate(R.layout.qr_dialog_layout, null);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String id = getString(R.string.qr_wx_id);
-                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("label", id);
-                clipboardManager.setPrimaryClip(clip);
-
-                //跳到微信
-                Intent wxIntent = getPackageManager().getLaunchIntentForPackage(
-                        WechatAccessbilityJob.WECHAT_PACKAGENAME);
-                if(wxIntent != null) {
-                    try {
-                        startActivity(wxIntent);
-                    } catch (Exception e){}
-                }
-
-                Toast.makeText(getApplicationContext(), "已复制到粘贴板", Toast.LENGTH_LONG).show();
-                QHBApplication.eventStatistics(MainActivity.this, "copy_qr");
-                dialog.dismiss();
-            }
-        });
-        dialog.setContentView(view);
-        dialog.show();
-    }
+//    private void showQrDialog() {
+//        final Dialog dialog = new Dialog(this, R.style.QR_Dialog_Theme);
+//        View view = getLayoutInflater().inflate(R.layout.qr_dialog_layout, null);
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String id = getString(R.string.qr_wx_id);
+//                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+//                ClipData clip = ClipData.newPlainText("label", id);
+//                clipboardManager.setPrimaryClip(clip);
+//
+//                //跳到微信
+//                Intent wxIntent = getPackageManager().getLaunchIntentForPackage(
+//                        WechatAccessbilityJob.WECHAT_PACKAGENAME);
+//                if(wxIntent != null) {
+//                    try {
+//                        startActivity(wxIntent);
+//                    } catch (Exception e){}
+//                }
+//
+//                Toast.makeText(getApplicationContext(), "已复制到粘贴板", Toast.LENGTH_LONG).show();
+//                QHBApplication.eventStatistics(MainActivity.this, "copy_qr");
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.setContentView(view);
+//        dialog.show();
+//    }
 
     /** 显示捐赠的对话框*/
-    private void showDonateDialog() {
-        final Dialog dialog = new Dialog(this, R.style.QR_Dialog_Theme);
-        View view = getLayoutInflater().inflate(R.layout.donate_dialog_layout, null);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        view.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                File output = new File(android.os.Environment.getExternalStorageDirectory(), "codeboy_wechatpay_qr.jpg");
-                if(!output.exists()) {
-                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wechatpay_qr);
-                    BitmapUtils.saveBitmap(MainActivity.this, output, bitmap);
-                }
-                Toast.makeText(MainActivity.this, "已保存到:" + output.getAbsolutePath(), Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
-        dialog.setContentView(view);
-        dialog.show();
-    }
+//    private void showDonateDialog() {
+//        final Dialog dialog = new Dialog(this, R.style.QR_Dialog_Theme);
+//        View view = getLayoutInflater().inflate(R.layout.donate_dialog_layout, null);
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+//        view.setOnLongClickListener(new View.OnLongClickListener() {
+//
+//            @Override
+//            public boolean onLongClick(View v) {
+//                File output = new File(android.os.Environment.getExternalStorageDirectory(), "codeboy_wechatpay_qr.jpg");
+//                if(!output.exists()) {
+//                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wechatpay_qr);
+//                    BitmapUtils.saveBitmap(MainActivity.this, output, bitmap);
+//                }
+//                Toast.makeText(MainActivity.this, "已保存到:" + output.getAbsolutePath(), Toast.LENGTH_LONG).show();
+//                return true;
+//            }
+//        });
+//        dialog.setContentView(view);
+//        dialog.show();
+//    }
 
     /** 显示未开启辅助服务的对话框*/
     private void showOpenAccessibilityServiceDialog() {
@@ -313,8 +314,20 @@ public class MainActivity extends BaseSettingsActivity {
             addPreferencesFromResource(R.xml.main);
 
             //微信红包开关
-            Preference wechatPref = findPreference(Config.KEY_ENABLE_WECHAT);
-            wechatPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            Preference wechatPref = findPreference(Config.KEY_ENABLE_WECHAT);
+            Preference fengxinPref = findPreference(Config.KEY_ENABLE_FENGXING);
+
+//            wechatPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//                @Override
+//                public boolean onPreferenceChange(Preference preference, Object newValue) {
+//                    if((Boolean) newValue && !QiangHongBaoService.isRunning()) {
+//                        ((MainActivity)getActivity()).showOpenAccessibilityServiceDialog();
+//                    }
+//                    return true;
+//                }
+//            });
+
+            fengxinPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     if((Boolean) newValue && !QiangHongBaoService.isRunning()) {
@@ -323,6 +336,7 @@ public class MainActivity extends BaseSettingsActivity {
                     return true;
                 }
             });
+
 
             notificationPref = (SwitchPreference) findPreference("KEY_NOTIFICATION_SERVICE_TEMP_ENABLE");
             notificationPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -351,29 +365,29 @@ public class MainActivity extends BaseSettingsActivity {
                 }
             });
 
-            Preference preference = findPreference("KEY_FOLLOW_ME");
-            if(preference != null) {
-                preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        ((MainActivity) getActivity()).showQrDialog();
-                        QHBApplication.eventStatistics(getActivity(), "about_author");
-                        return true;
-                    }
-                });
-            }
-
-            preference = findPreference("KEY_DONATE_ME");
-            if(preference != null) {
-                preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        ((MainActivity) getActivity()).showDonateDialog();
-                        QHBApplication.eventStatistics(getActivity(), "donate");
-                        return true;
-                    }
-                });
-            }
+//            Preference preference = findPreference("KEY_FOLLOW_ME");
+//            if(preference != null) {
+//                preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//                    @Override
+//                    public boolean onPreferenceClick(Preference preference) {
+//                        ((MainActivity) getActivity()).showQrDialog();
+//                        QHBApplication.eventStatistics(getActivity(), "about_author");
+//                        return true;
+//                    }
+//                });
+//            }
+//
+//            preference = findPreference("KEY_DONATE_ME");
+//            if(preference != null) {
+//                preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//                    @Override
+//                    public boolean onPreferenceClick(Preference preference) {
+//                        ((MainActivity) getActivity()).showDonateDialog();
+//                        QHBApplication.eventStatistics(getActivity(), "donate");
+//                        return true;
+//                    }
+//                });
+//            }
 
             findPreference("WECHAT_SETTINGS").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CodeBoy抢红包</string>
+    <string name="app_name">风行抢单</string>
     <string name="main_name">抢红包</string>
-    <string name="accessibility_description">启动抢红包服务，支持微信。</string>
-    <string name="service_name">CodeBoy抢红包</string>
+    <string name="accessibility_description">启动抢单服务，支持风行。</string>
+    <string name="service_name">风行抢单</string>
     <string name="open_service_title">需要开启辅助服务正常使用</string>
     <string name="open_service_button">打开辅助服务</string>
     <string name="open_notify_service">打开通知栏服务</string>
     <string name="check_update">检查更新</string>
     <string name="share">分享</string>
-    <string name="tips">找到[CodeBoy抢红包]，然后开启服务即可</string>
+    <string name="tips">找到[风行抢单]，然后开启服务即可</string>
     <string name="qq_settings">QQ设置</string>
     <string name="wechat_settings">微信设置</string>
     <string name="notify_settings">红包提醒设置</string>

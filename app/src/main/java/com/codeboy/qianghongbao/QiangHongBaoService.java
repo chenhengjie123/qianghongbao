@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.codeboy.qianghongbao.job.AccessbilityJob;
 import com.codeboy.qianghongbao.job.WechatAccessbilityJob;
+import com.codeboy.qianghongbao.job.FengxingAccessbilityJob;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,14 +24,15 @@ import java.util.List;
  * <p>Created by LeonLee on 15/2/17 下午10:25.</p>
  * <p><a href="mailto:codeboy2013@163.com">Email:codeboy2013@163.com</a></p>
  *
- * 抢红包外挂服务
+ * 抢单外挂服务
  */
 public class QiangHongBaoService extends AccessibilityService {
 
     private static final String TAG = "QiangHongBao";
 
     private static final Class[] ACCESSBILITY_JOBS= {
-            WechatAccessbilityJob.class,
+//            WechatAccessbilityJob.class,
+            FengxingAccessbilityJob.class,
     };
 
     private static QiangHongBaoService service;
@@ -86,7 +88,7 @@ public class QiangHongBaoService extends AccessibilityService {
     @Override
     public void onInterrupt() {
         Log.d(TAG, "qianghongbao service interrupt");
-        Toast.makeText(this, "中断抢红包服务", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "中断抢单服务", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -96,7 +98,7 @@ public class QiangHongBaoService extends AccessibilityService {
         //发送广播，已经连接上了
         Intent intent = new Intent(Config.ACTION_QIANGHONGBAO_SERVICE_CONNECT);
         sendBroadcast(intent);
-        Toast.makeText(this, "已连接抢红包服务", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "已连接抢单服务", Toast.LENGTH_SHORT).show();
     }
 
     @Override

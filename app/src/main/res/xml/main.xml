@@ -2,28 +2,35 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-            android:title="开启抢红包平台">
+            android:title="开启抢单平台">
+
+        <!--<com.codeboy.qianghongbao.widget.CustomSwitchPreference-->
+            <!--android:defaultValue="true"-->
+            <!--android:title="微信"-->
+            <!--android:icon="@drawable/settings_ic_wechat"-->
+            <!--android:key="KEY_ENABLE_WECHAT"/>-->
 
         <com.codeboy.qianghongbao.widget.CustomSwitchPreference
             android:defaultValue="true"
-            android:title="微信"
-            android:icon="@drawable/settings_ic_wechat"
-            android:key="KEY_ENABLE_WECHAT"/>
+            android:title="风行"
+            android:icon="@drawable/settings_ic_fengxing"
+            android:key="KEY_ENABLE_FENGXING"/>
+
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="关于">
-        <Preference
-            android:title="@string/follow_preference_title"
-            android:summary="@string/follow_preference_summary"
-            android:key="KEY_FOLLOW_ME"/>
+    <!--<PreferenceCategory-->
+        <!--android:title="关于">-->
+        <!--<Preference-->
+            <!--android:title="@string/follow_preference_title"-->
+            <!--android:summary="@string/follow_preference_summary"-->
+            <!--android:key="KEY_FOLLOW_ME"/>-->
 
-        <Preference
-            android:title="@string/donate_title"
-            android:summary="@string/donate_summary"
-            android:key="KEY_DONATE_ME"/>
-    </PreferenceCategory>
+        <!--<Preference-->
+            <!--android:title="@string/donate_title"-->
+            <!--android:summary="@string/donate_summary"-->
+            <!--android:key="KEY_DONATE_ME"/>-->
+    <!--</PreferenceCategory>-->
 
     <PreferenceCategory
         android:title="平台设置">

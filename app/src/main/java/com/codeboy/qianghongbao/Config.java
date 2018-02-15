@@ -20,6 +20,7 @@ public class Config {
 
     public static final String PREFERENCE_NAME = "config";
     public static final String KEY_ENABLE_WECHAT = "KEY_ENABLE_WECHAT";
+    public static final String KEY_ENABLE_FENGXING = "KEY_ENABLE_FENGXING";
     public static final String KEY_WECHAT_AFTER_OPEN_HONGBAO = "KEY_WECHAT_AFTER_OPEN_HONGBAO";
     public static final String KEY_WECHAT_DELAY_TIME = "KEY_WECHAT_DELAY_TIME";
     public static final String KEY_WECHAT_AFTER_GET_HONGBAO = "KEY_WECHAT_AFTER_GET_HONGBAO";
