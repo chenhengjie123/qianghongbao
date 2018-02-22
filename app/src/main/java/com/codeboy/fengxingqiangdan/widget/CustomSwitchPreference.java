@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao.widget;
+package com.codeboy.fengxingqiangdan.widget;
 
 import android.content.Context;
 import android.os.Build;

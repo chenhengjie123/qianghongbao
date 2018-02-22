@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao.util;
+package com.codeboy.fengxingqiangdan.util;
 
 import android.accessibilityservice.AccessibilityService;
 import android.os.Build;

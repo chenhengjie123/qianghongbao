@@ -5,11 +5,11 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.codeboy.qianghongbao"
+        applicationId "com.codeboy.fengxingqiangdan"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 307
-        versionName "3.0.7"
+        versionCode 100
+        versionName "1.0.0"
     }
 
     lintOptions {

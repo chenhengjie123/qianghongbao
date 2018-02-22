@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.annotation.TargetApi;
 import android.app.Notification;

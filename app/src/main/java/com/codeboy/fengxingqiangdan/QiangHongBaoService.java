@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
@@ -11,9 +11,9 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Toast;
 
-import com.codeboy.qianghongbao.job.AccessbilityJob;
-import com.codeboy.qianghongbao.job.WechatAccessbilityJob;
-import com.codeboy.qianghongbao.job.FengxingAccessbilityJob;
+import com.codeboy.fengxingqiangdan.job.AccessbilityJob;
+import com.codeboy.fengxingqiangdan.job.FengxingAccessbilityJob;
+import com.codeboy.fengxingqiangdan.job.WechatAccessbilityJob;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -103,9 +103,7 @@ public class QiangHongBaoService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        if(BuildConfig.DEBUG) {
-            Log.d(TAG, "事件--->" + event );
-        }
+        Log.i(TAG, "Received event: " + event );
         String pkn = String.valueOf(event.getPackageName());
         if(mAccessbilityJobs != null && !mAccessbilityJobs.isEmpty()) {
             if(!getConfig().isAgreement()) {

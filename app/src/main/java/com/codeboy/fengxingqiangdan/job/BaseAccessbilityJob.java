@@ -1,9 +1,9 @@
-package com.codeboy.qianghongbao.job;
+package com.codeboy.fengxingqiangdan.job;
 
 import android.content.Context;
 
-import com.codeboy.qianghongbao.Config;
-import com.codeboy.qianghongbao.QiangHongBaoService;
+import com.codeboy.fengxingqiangdan.Config;
+import com.codeboy.fengxingqiangdan.QiangHongBaoService;
 
 /**
  * <p>Created 16/1/16 上午12:38.</p>

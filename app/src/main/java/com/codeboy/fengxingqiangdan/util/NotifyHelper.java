@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao.util;
+package com.codeboy.fengxingqiangdan.util;
 
 import android.app.KeyguardManager;
 import android.app.PendingIntent;
@@ -9,7 +9,7 @@ import android.os.Build;
 import android.os.PowerManager;
 import android.os.Vibrator;
 
-import com.codeboy.qianghongbao.Config;
+import com.codeboy.fengxingqiangdan.Config;
 
 import java.util.Calendar;
 

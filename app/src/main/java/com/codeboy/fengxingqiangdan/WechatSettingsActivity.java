@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class WechatSettingsActivity extends BaseSettingsActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     int value = Integer.parseInt(String.valueOf(newValue));
                     preference.setSummary(wxMode.getEntries()[value]);
-                    QHBApplication.eventStatistics(getActivity(), "wx_mode", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "wx_mode", String.valueOf(newValue));
                     return true;
                 }
             });
@@ -47,7 +47,7 @@ public class WechatSettingsActivity extends BaseSettingsActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     int value = Integer.parseInt(String.valueOf(newValue));
                     preference.setSummary(wxAfterOpenPre.getEntries()[value]);
-                    QHBApplication.eventStatistics(getActivity(), "wx_after_open", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "wx_after_open", String.valueOf(newValue));
                     return true;
                 }
             });
@@ -60,7 +60,7 @@ public class WechatSettingsActivity extends BaseSettingsActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     int value = Integer.parseInt(String.valueOf(newValue));
                     preference.setSummary(wxAfterGetPre.getEntries()[value]);
-                    QHBApplication.eventStatistics(getActivity(), "wx_after_get", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "wx_after_get", String.valueOf(newValue));
                     return true;
                 }
             });
@@ -75,7 +75,7 @@ public class WechatSettingsActivity extends BaseSettingsActivity {
                     } else {
                         preference.setSummary("已延时" + newValue + "毫秒");
                     }
-                    QHBApplication.eventStatistics(getActivity(), "wx_delay_time", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "wx_delay_time", String.valueOf(newValue));
                     return true;
                 }
             });

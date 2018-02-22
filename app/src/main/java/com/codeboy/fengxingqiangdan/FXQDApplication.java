@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.app.Activity;
 import android.app.Application;
@@ -11,7 +11,7 @@ import android.content.Context;
  *
  * @author LeonLee
  */
-public class QHBApplication extends Application {
+public class FXQDApplication extends Application {
 
     @Override
     public void onCreate() {

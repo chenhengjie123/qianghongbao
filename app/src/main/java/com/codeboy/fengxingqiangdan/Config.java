@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -63,9 +63,14 @@ public class Config {
         preferences = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
     }
 
+    /** 是否启动风行抢单*/
+    public boolean isEnableFengxing() {
+        return preferences.getBoolean(KEY_ENABLE_FENGXING, true);
+    }
+
     /** 是否启动微信抢红包*/
     public boolean isEnableWechat() {
-        return preferences.getBoolean(KEY_ENABLE_WECHAT, true) && UmengConfig.isEnableWechat(mContext);
+        return preferences.getBoolean(KEY_ENABLE_WECHAT, true);
     }
 
     /** 微信打开红包后的事件*/

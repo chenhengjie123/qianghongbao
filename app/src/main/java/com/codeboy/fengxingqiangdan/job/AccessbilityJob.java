@@ -1,9 +1,9 @@
-package com.codeboy.qianghongbao.job;
+package com.codeboy.fengxingqiangdan.job;
 
 import android.view.accessibility.AccessibilityEvent;
 
-import com.codeboy.qianghongbao.IStatusBarNotification;
-import com.codeboy.qianghongbao.QiangHongBaoService;
+import com.codeboy.fengxingqiangdan.IStatusBarNotification;
+import com.codeboy.fengxingqiangdan.QiangHongBaoService;
 
 /**
  * <p>Created 16/1/16 上午12:32.</p>

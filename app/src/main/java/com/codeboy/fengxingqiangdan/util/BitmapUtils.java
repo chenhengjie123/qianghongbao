@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao.util;
+package com.codeboy.fengxingqiangdan.util;
 
 import android.content.ContentValues;
 import android.content.Context;

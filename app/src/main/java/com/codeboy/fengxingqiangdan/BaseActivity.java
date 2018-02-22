@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,18 +16,18 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        QHBApplication.activityCreateStatistics(this);
+        FXQDApplication.activityCreateStatistics(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        QHBApplication.activityResumeStatistics(this);
+        FXQDApplication.activityResumeStatistics(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        QHBApplication.activityPauseStatistics(this);
+        FXQDApplication.activityPauseStatistics(this);
     }
 }

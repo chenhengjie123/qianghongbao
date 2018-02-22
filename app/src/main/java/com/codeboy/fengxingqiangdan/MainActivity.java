@@ -1,19 +1,15 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -25,12 +21,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
-import com.codeboy.qianghongbao.job.WechatAccessbilityJob;
-import com.codeboy.qianghongbao.job.FengxingAccessbilityJob;
-import com.codeboy.qianghongbao.util.BitmapUtils;
-
-import java.io.File;
 
 /**
  * <p>Created by LeonLee on 15/2/17 下午10:11.</p>
@@ -57,7 +47,7 @@ public class MainActivity extends BaseSettingsActivity {
 
         setTitle(getString(R.string.app_name) + version);
 
-        QHBApplication.activityStartMain(this);
+        FXQDApplication.activityStartMain(this);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Config.ACTION_QIANGHONGBAO_SERVICE_CONNECT);
@@ -155,15 +145,15 @@ public class MainActivity extends BaseSettingsActivity {
         switch (item.getItemId()) {
             case 0:
                 openAccessibilityServiceSettings();
-                QHBApplication.eventStatistics(this, "menu_service");
+                FXQDApplication.eventStatistics(this, "menu_service");
                 return true;
             case 3:
                 openNotificationServiceSettings();
-                QHBApplication.eventStatistics(this, "menu_notify");
+                FXQDApplication.eventStatistics(this, "menu_notify");
                 break;
             case 4:
                 startActivity(new Intent(this, AboutMeActivity.class));
-                QHBApplication.eventStatistics(this, "menu_about");
+                FXQDApplication.eventStatistics(this, "menu_about");
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -179,14 +169,14 @@ public class MainActivity extends BaseSettingsActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Config.getConfig(getApplicationContext()).setAgreement(true);
-                QHBApplication.eventStatistics(MainActivity.this, "agreement", "true");
+                FXQDApplication.eventStatistics(MainActivity.this, "agreement", "true");
             }
         });
         builder.setNegativeButton("不同意", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Config.getConfig(getApplicationContext()).setAgreement(false);
-                QHBApplication.eventStatistics(MainActivity.this, "agreement", "false");
+                FXQDApplication.eventStatistics(MainActivity.this, "agreement", "false");
                 finish();
             }
         });
@@ -195,7 +185,7 @@ public class MainActivity extends BaseSettingsActivity {
 
     /** 分享*/
     private void showShareDialog() {
-        QHBApplication.showShare(this);
+        FXQDApplication.showShare(this);
     }
 
     /** 二维码*/
@@ -220,7 +210,7 @@ public class MainActivity extends BaseSettingsActivity {
 //                }
 //
 //                Toast.makeText(getApplicationContext(), "已复制到粘贴板", Toast.LENGTH_LONG).show();
-//                QHBApplication.eventStatistics(MainActivity.this, "copy_qr");
+//                FXQDApplication.eventStatistics(MainActivity.this, "copy_qr");
 //                dialog.dismiss();
 //            }
 //        });
@@ -313,7 +303,7 @@ public class MainActivity extends BaseSettingsActivity {
 
             addPreferencesFromResource(R.xml.main);
 
-            //微信红包开关
+            //开关
 //            Preference wechatPref = findPreference(Config.KEY_ENABLE_WECHAT);
             Preference fengxinPref = findPreference(Config.KEY_ENABLE_FENGXING);
 
@@ -360,7 +350,7 @@ public class MainActivity extends BaseSettingsActivity {
                         ((MainActivity)getActivity()).openNotificationServiceSettings();
                         return false;
                     }
-                    QHBApplication.eventStatistics(getActivity(), "notify_service", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "notify_service", String.valueOf(newValue));
                     return true;
                 }
             });
@@ -371,7 +361,7 @@ public class MainActivity extends BaseSettingsActivity {
 //                    @Override
 //                    public boolean onPreferenceClick(Preference preference) {
 //                        ((MainActivity) getActivity()).showQrDialog();
-//                        QHBApplication.eventStatistics(getActivity(), "about_author");
+//                        FXQDApplication.eventStatistics(getActivity(), "about_author");
 //                        return true;
 //                    }
 //                });
@@ -383,27 +373,27 @@ public class MainActivity extends BaseSettingsActivity {
 //                    @Override
 //                    public boolean onPreferenceClick(Preference preference) {
 //                        ((MainActivity) getActivity()).showDonateDialog();
-//                        QHBApplication.eventStatistics(getActivity(), "donate");
+//                        FXQDApplication.eventStatistics(getActivity(), "donate");
 //                        return true;
 //                    }
 //                });
 //            }
 
-            findPreference("WECHAT_SETTINGS").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    startActivity(new Intent(getActivity(), WechatSettingsActivity.class));
-                    return true;
-                }
-            });
+//            findPreference("WECHAT_SETTINGS").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//                @Override
+//                public boolean onPreferenceClick(Preference preference) {
+//                    startActivity(new Intent(getActivity(), WechatSettingsActivity.class));
+//                    return true;
+//                }
+//            });
 
-            findPreference("NOTIFY_SETTINGS").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    startActivity(new Intent(getActivity(), NotifySettingsActivity.class));
-                    return true;
-                }
-            });
+//            findPreference("NOTIFY_SETTINGS").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//                @Override
+//                public boolean onPreferenceClick(Preference preference) {
+//                    startActivity(new Intent(getActivity(), NotifySettingsActivity.class));
+//                    return true;
+//                }
+//            });
 
         }
 
@@ -415,7 +405,7 @@ public class MainActivity extends BaseSettingsActivity {
             boolean running = QiangHongBaoService.isNotificationServiceRunning();
             boolean enable = Config.getConfig(getActivity()).isEnableNotificationService();
             if( enable && running && !notificationPref.isChecked()) {
-                QHBApplication.eventStatistics(getActivity(), "notify_service", String.valueOf(true));
+                FXQDApplication.eventStatistics(getActivity(), "notify_service", String.valueOf(true));
                 notificationChangeByUser = false;
                 notificationPref.setChecked(true);
             } else if((!enable || !running) && notificationPref.isChecked()) {

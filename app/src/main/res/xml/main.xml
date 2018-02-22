@@ -4,13 +4,13 @@
     <PreferenceCategory
             android:title="开启抢单平台">
 
-        <!--<com.codeboy.qianghongbao.widget.CustomSwitchPreference-->
+        <!--<com.codeboy.fengxingqiangdan.widget.CustomSwitchPreference-->
             <!--android:defaultValue="true"-->
             <!--android:title="微信"-->
             <!--android:icon="@drawable/settings_ic_wechat"-->
             <!--android:key="KEY_ENABLE_WECHAT"/>-->
 
-        <com.codeboy.qianghongbao.widget.CustomSwitchPreference
+        <com.codeboy.fengxingqiangdan.widget.CustomSwitchPreference
             android:defaultValue="true"
             android:title="风行"
             android:icon="@drawable/settings_ic_fengxing"
@@ -32,25 +32,25 @@
             <!--android:key="KEY_DONATE_ME"/>-->
     <!--</PreferenceCategory>-->
 
-    <PreferenceCategory
-        android:title="平台设置">
+    <!--<PreferenceCategory-->
+        <!--android:title="平台设置">-->
 
-        <Preference
-            android:title="微信设置"
-            android:summary="更改抢红包模式，可以防封号"
-            android:key="WECHAT_SETTINGS"/>
+        <!--<Preference-->
+            <!--android:title="微信设置"-->
+            <!--android:summary="更改抢红包模式，可以防封号"-->
+            <!--android:key="WECHAT_SETTINGS"/>-->
 
-    </PreferenceCategory>
+    <!--</PreferenceCategory>-->
 
     <PreferenceCategory android:title="高级设置">
-        <com.codeboy.qianghongbao.widget.CustomSwitchPreference
-            android:title="快速监听通知栏"
-            android:summary="闪电模式，抢红包更快更稳定"
+        <com.codeboy.fengxingqiangdan.widget.CustomSwitchPreference
+            android:title="监听通知栏"
+            android:summary="收到新订单通知后，自动抢单。务必开启！"
             android:defaultValue="false"
             android:key="KEY_NOTIFICATION_SERVICE_TEMP_ENABLE"/>
 
-        <Preference
-            android:title="@string/notify_settings"
-            android:key="NOTIFY_SETTINGS"/>
+        <!--<Preference-->
+            <!--android:title="@string/notify_settings"-->
+            <!--android:key="NOTIFY_SETTINGS"/>-->
     </PreferenceCategory>
 </PreferenceScreen>

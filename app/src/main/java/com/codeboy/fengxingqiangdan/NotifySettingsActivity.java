@@ -1,4 +1,4 @@
-package com.codeboy.qianghongbao;
+package com.codeboy.fengxingqiangdan;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class NotifySettingsActivity extends BaseSettingsActivity {
             findPreference(Config.KEY_NOTIFY_SOUND).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    QHBApplication.eventStatistics(getActivity(), "notify_sound", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "notify_sound", String.valueOf(newValue));
                     return true;
                 }
             });
@@ -36,7 +36,7 @@ public class NotifySettingsActivity extends BaseSettingsActivity {
             findPreference(Config.KEY_NOTIFY_VIBRATE).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    QHBApplication.eventStatistics(getActivity(), "notify_vibrate", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "notify_vibrate", String.valueOf(newValue));
                     return true;
                 }
             });
@@ -44,7 +44,7 @@ public class NotifySettingsActivity extends BaseSettingsActivity {
             findPreference(Config.KEY_NOTIFY_NIGHT_ENABLE).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    QHBApplication.eventStatistics(getActivity(), "notify_night", String.valueOf(newValue));
+                    FXQDApplication.eventStatistics(getActivity(), "notify_night", String.valueOf(newValue));
                     return true;
                 }
             });
